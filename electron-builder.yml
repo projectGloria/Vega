@@ -1,0 +1,43 @@
+appId: com.nihil.videodownloader
+productName: VideoDownloader
+copyright: Copyright © 2026
+
+directories:
+  output: dist
+  buildResources: resources
+
+files:
+  - out/**/*
+  - package.json
+
+# yauzl is used at runtime by the provisioning step, so it must stay unpacked
+# rather than being bundled into the asar as a virtual file.
+asarUnpack:
+  - node_modules/yauzl/**
+
+# The tray reads this at runtime, so it has to sit outside the asar.
+extraResources:
+  - from: resources/icon.ico
+    to: icon.ico
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+  artifactName: ${productName}-${version}-${arch}.${ext}
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Video Downloader
+  # The app provisions yt-dlp and ffmpeg into %APPDATA%; leave them on uninstall
+  # unless the user asks, so a reinstall does not re-download 80MB.
+  deleteAppDataOnUninstall: false
+
+portable:
+  artifactName: ${productName}-${version}-portable.${ext}

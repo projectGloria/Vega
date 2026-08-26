@@ -1,0 +1,279 @@
+@import 'tailwindcss';
+
+/*
+ * Vega: a near-black ground, two raised surface steps on top of it, and a
+ * two-stop accent gradient the user can re-tint from Settings. `--accent` and
+ * `--accent-2` are set at runtime on :root, so anything gradient-coloured uses
+ * inline styles rather than Tailwind colour classes.
+ */
+@theme {
+  --color-abyss: #07080c;
+  --color-ground: #0b0e15;
+  --color-surface: #12151f;
+  --color-raised: #171b28;
+  --color-line: rgba(255, 255, 255, 0.07);
+  --color-line-strong: rgba(255, 255, 255, 0.12);
+  --color-ink: #eef0f6;
+  --color-muted: #8b93a7;
+  --color-faint: #5b6274;
+  --color-ok: #34d399;
+  --color-warn: #fbbf24;
+  --color-err: #f87171;
+
+  --radius-card: 12px;
+
+  --font-sans: 'Inter', 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif;
+}
+
+:root {
+  --accent: #38bdf8;
+  --accent-2: #6366f1;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --accent-line: rgba(56, 189, 248, 0.35);
+  --grad: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Scrollbars styled to disappear into the surface rather than interrupt it. */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+  background-clip: content-box;
+}
+
+@utility drag {
+  -webkit-app-region: drag;
+}
+@utility no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/*
+ * Two soft accent blooms behind the shell. They are painted on the app root
+ * rather than on body so they sit under the sidebar and content alike.
+ */
+@utility app-bg {
+  position: relative;
+  background: var(--color-ground);
+  isolation: isolate;
+}
+
+@utility bloom {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*
+ * The sidebar collapses to icons once the window gets narrow.
+ *
+ * Written as one block of real CSS rather than as paired Tailwind utilities.
+ * `w-[216px]` and `max-[960px]:w-16` have identical specificity, so which one
+ * wins comes down to the order Tailwind happens to emit them in — and it puts
+ * the arbitrary value last. The labels vanished on cue while the column stayed
+ * 216px wide, leaving an empty stripe down the side. Keeping both widths in one
+ * rule makes the media query win by position, which is not a coin toss.
+ */
+.sidebar {
+  width: 216px;
+  padding: 12px;
+}
+.sidebar-item {
+  padding: 10px 12px;
+  justify-content: flex-start;
+}
+.sidebar-rail {
+  left: -12px;
+}
+
+@media (width < 960px) {
+  .sidebar {
+    width: 64px;
+    padding: 12px 8px;
+  }
+  .sidebar-item {
+    padding: 10px 0;
+    justify-content: center;
+  }
+  .sidebar-rail {
+    left: -8px;
+  }
+  .sidebar-wide-only {
+    display: none;
+  }
+}
+
+@utility surface-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+
+@utility focus-ring {
+  outline: none;
+  box-shadow:
+    0 0 0 1px var(--accent-line),
+    0 0 0 3px var(--accent-soft);
+}
+
+/* ---------------------------------------------------------------- */
+/* Motion — short, interruptible, and disabled wholesale for anyone   */
+/* who asked the OS for reduced motion.                               */
+/* ---------------------------------------------------------------- */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility fade-up {
+  animation: fade-up 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility pop-in {
+  animation: pop-in 220ms cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+@utility shake {
+  animation: shake 400ms ease;
+}
+
+/* The sheen that travels along a live progress bar. */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* A bar with no known total still has to look like it is doing something. */
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%) scaleX(0.4);
+  }
+  100% {
+    transform: translateX(300%) scaleX(0.4);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(52, 211, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
