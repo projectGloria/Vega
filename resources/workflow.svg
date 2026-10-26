@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 260" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wfGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#161b2e" />
+      <stop offset="100%" stop-color="#0f1322" />
+    </linearGradient>
+  </defs>
+
+  <rect width="920" height="260" rx="14" fill="#0c0f1a" stroke="rgba(255, 255, 255, 0.07)" stroke-width="1" />
+
+  <!-- Step 1: Ingestion -->
+  <g transform="translate(30, 30)">
+    <rect width="180" height="200" rx="10" fill="url(#cardGrad)" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" />
+    <circle cx="90" cy="45" r="22" fill="rgba(56, 189, 248, 0.12)" />
+    <text x="90" y="51" text-anchor="middle" font-size="20">🔗</text>
+    <text x="90" y="95" text-anchor="middle" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="14">1. Ingest Link</text>
+    <text x="90" y="125" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Direct URL Paste</text>
+    <text x="90" y="145" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Browser Drag &amp; Drop</text>
+    <text x="90" y="165" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Clipboard Watcher</text>
+    <rect x="25" y="185" width="130" height="4" rx="2" fill="url(#wfGrad)" />
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 222 130 L 246 130" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,3" />
+  <polygon points="246,126 254,130 246,134" fill="#38bdf8" />
+
+  <!-- Step 2: Probe -->
+  <g transform="translate(258, 30)">
+    <rect width="180" height="200" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <circle cx="90" cy="45" r="22" fill="rgba(99, 102, 241, 0.15)" />
+    <text x="90" y="51" text-anchor="middle" font-size="20">⚡</text>
+    <text x="90" y="95" text-anchor="middle" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="14">2. Auto-Probe</text>
+    <text x="90" y="125" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">yt-dlp JSON Probe</text>
+    <text x="90" y="145" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Audio &amp; Video Streams</text>
+    <text x="90" y="165" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Playlist Indexing</text>
+    <rect x="25" y="185" width="130" height="4" rx="2" fill="url(#wfGrad)" />
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 450 130 L 474 130" stroke="#818cf8" stroke-width="2" stroke-dasharray="4,3" />
+  <polygon points="474,126 482,130 474,134" fill="#818cf8" />
+
+  <!-- Step 3: Customize -->
+  <g transform="translate(486, 30)">
+    <rect width="180" height="200" rx="10" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+    <circle cx="90" cy="45" r="22" fill="rgba(168, 85, 247, 0.15)" />
+    <text x="90" y="51" text-anchor="middle" font-size="20">🎛️</text>
+    <text x="90" y="95" text-anchor="middle" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="14">3. Configure</text>
+    <text x="90" y="125" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Quality (4K down to 360p)</text>
+    <text x="90" y="145" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Audio (MP3, FLAC, etc.)</text>
+    <text x="90" y="165" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">SponsorBlock &amp; Subs</text>
+    <rect x="25" y="185" width="130" height="4" rx="2" fill="url(#wfGrad)" />
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 678 130 L 702 130" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,3" />
+  <polygon points="702,126 710,130 702,134" fill="#a855f7" />
+
+  <!-- Step 4: Execute & Mux -->
+  <g transform="translate(714, 30)">
+    <rect width="176" height="200" rx="10" fill="url(#cardGrad)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1" />
+    <circle cx="88" cy="45" r="22" fill="rgba(16, 185, 129, 0.15)" />
+    <text x="88" y="51" text-anchor="middle" font-size="20">⚡</text>
+    <text x="88" y="95" text-anchor="middle" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="14">4. Download &amp; Mux</text>
+    <text x="88" y="125" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Parallel Concurrency</text>
+    <text x="88" y="145" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">Live Speed &amp; Taskbar</text>
+    <text x="88" y="165" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5">FFmpeg Auto-Muxing</text>
+    <rect x="23" y="185" width="130" height="4" rx="2" fill="#10b981" />
+  </g>
+</svg>
