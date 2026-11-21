@@ -1,0 +1,10 @@
+id            = "Vega"
+name          = "Vega"
+version       = "1.0.0"
+main_exe      = "VideoDownloader.exe"
+icon          = "resources/icon.ico"
+accent        = "#22c55e"
+description   = "Modern desktop video & audio downloader"
+needs_webview2 = false
+data_folders  = ["%APPDATA%\\VideoDownloader"]
+legacy_names  = ["VideoDownloader", "Video Downloader"]
