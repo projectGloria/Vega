@@ -1,6 +1,6 @@
 {
   "name": "video-downloader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A clean, modern Windows desktop video downloader powered by yt-dlp and ffmpeg",
   "main": "./out/main/index.js",
   "author": "Nihil",
